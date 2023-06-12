@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Restaurantes</title>
   <link rel="icon" href="../assets/img/icons/R.png">
-  <link rel="stylesheet" href="/assets/restaurants.css" type="text/css">
+  <link rel="stylesheet" href="../assets/css/restaurants.css" type="text/css">
 </head>
 <body>
     
@@ -16,7 +16,7 @@
     <div class="navbar-center">
       <form action="/find" method="POST">
         <label for="criteria">Buscar:</label>
-        <input type="text" id="criteria" name="criteria" placeholder="Buscar">
+        <input type="text" id="criteria" name="criteria" placeholder="Buscar" required="true">
         <button type="submit" class="search-button">Buscar</button>
       </form>
     </div>
@@ -84,7 +84,7 @@
                 <p><%= `${Restaurants[prop].address.street} ${Restaurants[prop].address.building}, ${Restaurants[prop].address.zipcode}, ${Restaurants[prop].borough} ` %></p>
               </div>
               <div class="right-content">
-                <a href="<%= `deleteRestaurant/${Restaurants[prop]._id}` %>" class="btnDelete" data-restaurant-id="<%= Restaurants[prop]._id %>">Eliminar</a>
+                <a href="<%= `deleteRestaurant/${Restaurants[prop]._id}` %>" class="btnDelete" id="delete-btn-<%= Restaurants[prop]._id %>" data-restaurant-id="<%= Restaurants[prop]._id %>">Eliminar</a>
                 <a href="<%= `findById/${Restaurants[prop]._id}` %>" class="btnUpdate" data-restaurant-id="<%= Restaurants[prop]._id %>">Actualizar</a>
                 <a href="<%= `viewDetails/${Restaurants[prop]._id}` %>" class="btnDetails" data-restaurant-id="<%= Restaurants[prop]._id %>">Ver detalles</a>
               </div>
@@ -105,5 +105,7 @@
     <% } %>
   </div>
 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="../assets/js/buttonAlerts.js"></script>
 </body>
 </html>

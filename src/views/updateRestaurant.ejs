@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Actualizar restaurante</title>
-  <link rel="stylesheet" href="/assets/style.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
   <link rel="icon" href="../assets/img/icons/R.png">
 </head>
 <body>
@@ -29,12 +29,15 @@
     <label for="longitude">Longitud:</label>
     <input type="text" id="longitude" name="longitude" value="<%= restaurant.address.coord[0] %>"><br><br>
     <div class="centered-button">
-      <button type="submit" class="update-button">Actualizar</button>
+      <button type="submit" class="update-button btnUpdateRestaurant" data-restaurant-id="<%= restaurant._id %>">Actualizar</button>
     </div>
   </form>
 
   <div class="centered-button">
     <a href="/restaurants" class="back-button">Volver</a>
   </div>
+
+  <script src="../assets/js/buttonAlerts.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 </html>
