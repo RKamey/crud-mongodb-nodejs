@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Restaurante</title>
+  <link rel="stylesheet" href="/assets/style.css" type="text/css">
+  <link rel="icon" href="../assets/img/icons/R.png">
+</head>
+<body>
+  <div class="form-container">
+    <h1 class="centered-title">Agregar Restaurante</h1>
+    
+    <form action="/addRestaurant" method="POST">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="borough">Barrio:</label>
+        <input type="text" id="borough" name="borough" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cuisine">Tipo de cocina:</label>
+        <input type="text" id="cuisine" name="cuisine" required>
+      </div>
+
+      <div class="form-group">
+        <label for="street">Calle:</label>
+        <input type="text" id="street" name="street" required>
+      </div>
+
+      <div class="form-group">
+        <label for="zipcode">Código postal:</label>
+        <input type="text" id="zipcode" name="zipcode" required>
+      </div>
+
+      <div class="form-group">
+        <label for="building">Número de edificio:</label>
+        <input type="text" id="building" name="building" required>
+      </div>
+
+      <div class="form-group">
+        <label for="latitude">Latitud:</label>
+        <input type="text" id="latitude" name="latitude" required>
+      </div>
+
+      <div class="form-group">
+        <label for="longitude">Longitud:</label>
+        <input type="text" id="longitude" name="longitude" required>
+      </div>
+
+      <div class="form-group">
+        <label for="restaurantId">Restaurant ID:</label>
+        <input type="text" id="restaurantId" name="restaurantId" required>
+      </div>
+
+      <div class="centered-button">
+          <button type="submit" class="submit-button">Guardar</button>
+      </div>
+    </form>
+
+    <div class="centered-button">
+        <a href="/restaurants" class="back-button">Volver</a>
+    </div>
+
+  </div>
+</body>
+</html>

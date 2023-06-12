@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Restaurantes</title>
+  <link rel="icon" href="../assets/img/icons/R.png">
+  <link rel="stylesheet" href="/assets/restaurants.css" type="text/css">
+</head>
+<body>
+    
+  <header class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="navbar-title">Lista de Restaurantes</a>
+    </div>
+    <div class="navbar-center">
+      <form action="/find" method="POST">
+        <label for="criteria">Buscar:</label>
+        <input type="text" id="criteria" name="criteria" placeholder="Buscar">
+        <button type="submit" class="search-button">Buscar</button>
+      </form>
+    </div>
+    <div class="navbar-right">
+      <a href="/addRestaurant" class="add-button">Agregar Restaurante</a>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <aside class="filter-sidebar">
+      <h2>Filtrar Restaurantes</h2>
+      <form action="/filter" method="POST">
+        <div class="form-group">
+          <label for="cuisine">Tipo de Cocina:</label>
+          <select id="cuisine" name="cuisine">
+            <option value="">Seleccione una opción</option>
+            <% const uniqueCuisines = new Set(); %>
+            <% Restaurants.forEach(restaurant => { %>
+              <% if (!uniqueCuisines.has(restaurant.cuisine)) { %>
+                <option value="<%= restaurant.cuisine %>"><%= restaurant.cuisine %></option>
+                <% uniqueCuisines.add(restaurant.cuisine); %>
+              <% } %>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="borough">Municipio:</label>
+          <select id="borough" name="borough">
+            <option value="">Seleccione una opción</option>
+            <!-- For each de Restaurants.borough -->
+            <% const uniqueBoroughs = new Set(); %>
+            <% Restaurants.forEach(restaurant => { %>
+              <% if (!uniqueBoroughs.has(restaurant.borough)) { %>
+                <option value="<%= restaurant.borough %>"><%= restaurant.borough %></option>
+                <% uniqueBoroughs.add(restaurant.borough); %>
+              <% } %>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="zipcode">Código Postal:</label>
+          <input type="text" id="zipcode" name="zipcode">
+        </div>
+        <div class="form-group">
+          <label for="startDate">Fecha de Inicio:</label>
+          <input type="date" id="startDate" name="startDate">
+        </div>
+        <div class="form-group">
+          <label for="endDate">Fecha de Fin:</label>
+          <input type="date" id="endDate" name="endDate">
+        </div>
+        <button type="submit" class="search-button">Buscar</button>
+        <button class="reset-button"><a href="/restaurants" class="reset-button">Reset</a></button>
+      </form>
+    </aside>
+  
+    <div class="card-container">
+      <div class="restaurant-cards">
+        <% Object.keys(Restaurants).forEach(prop => { %>
+          <div class="card">
+            <div class="card-content">
+              <div class="left-content">
+                <h2><%= Restaurants[prop].name %></h2>
+                <p><%= Restaurants[prop].cuisine %> <%= getIcon(Restaurants[prop].cuisine) %></p>
+                <p><%= `${Restaurants[prop].address.street} ${Restaurants[prop].address.building}, ${Restaurants[prop].address.zipcode}, ${Restaurants[prop].borough} ` %></p>
+              </div>
+              <div class="right-content">
+                <a href="<%= `deleteRestaurant/${Restaurants[prop]._id}` %>" class="btnDelete" data-restaurant-id="<%= Restaurants[prop]._id %>">Eliminar</a>
+                <a href="<%= `findById/${Restaurants[prop]._id}` %>" class="btnUpdate" data-restaurant-id="<%= Restaurants[prop]._id %>">Actualizar</a>
+                <a href="<%= `viewDetails/${Restaurants[prop]._id}` %>" class="btnDetails" data-restaurant-id="<%= Restaurants[prop]._id %>">Ver detalles</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/restaurants?page=<%= currentPage - 1 %>" class="prev">Anterior</a>
+    <% } %>
+
+    <% if (currentPage < totalPages) { %>
+      <a href="/restaurants?page=<%= currentPage + 1 %>" class="next">Siguiente</a>
+    <% } %>
+  </div>
+
+</body>
+</html>

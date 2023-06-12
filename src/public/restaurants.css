@@ -1,0 +1,265 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+  
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  .navbar-center {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-center form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-center label {
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .navbar-center input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .navbar-center .search-button {
+    padding: 6px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+    
+  .navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .search-button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .add-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }  
+  
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .filter-sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }  
+  
+  .filter-sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .left-content {
+    flex-grow: 1;
+  }
+  
+  .right-content {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  
+  .pagination a:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination .prev,
+  .pagination .next {
+    font-weight: bold;
+  }
+  
+  .btnDelete {
+    background-color: #e63946;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 12px;
+  }
+  
+  .btnUpdate {
+    background-color: #4287f5;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 12px;
+  }
+  
+  .btnDetails {
+    background-color: #4caf50;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
+  
+    .filter-sidebar {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .card-container {
+      width: 100%;
+    }
+  }
+  
+  .centered-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .reset-button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .reset-button:hover {
+    background-color: #e63946;
+  }
+  

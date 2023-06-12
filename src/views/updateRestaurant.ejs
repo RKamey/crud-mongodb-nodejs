@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar restaurante</title>
+  <link rel="stylesheet" href="/assets/style.css" type="text/css">
+  <link rel="icon" href="../assets/img/icons/R.png">
+</head>
+<body>
+  
+  <h1 class="centered-title">Actualizar restaurante</h1>
+
+  <form action="/updateRestaurant" method="POST">
+    <input type="hidden" name="id" value="<%= restaurant._id %>">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" value="<%= restaurant.name %>"><br><br>
+    <label for="borough">Borough:</label>
+    <input type="text" id="borough" name="borough" value="<%= restaurant.borough %>"><br><br>
+    <label for="cuisine">Tipo de cocina:</label>
+    <input type="text" id="cuisine" name="cuisine" value="<%= restaurant.cuisine %>"><br><br>
+    <label for="street">Calle:</label>
+    <input type="text" id="street" name="street" value="<%= restaurant.address.street %>"><br><br>
+    <label for="zipcode">Código postal:</label>
+    <input type="text" id="zipcode" name="zipcode" value="<%= restaurant.address.zipcode %>"><br><br>
+    <label for="building">Número de edificio:</label>
+    <input type="text" id="building" name="building" value="<%= restaurant.address.building %>"><br><br>
+    <label for="latitude">Latitud:</label>
+    <input type="text" id="latitude" name="latitude" value="<%= restaurant.address.coord[1] %>"><br><br>
+    <label for="longitude">Longitud:</label>
+    <input type="text" id="longitude" name="longitude" value="<%= restaurant.address.coord[0] %>"><br><br>
+    <div class="centered-button">
+      <button type="submit" class="update-button">Actualizar</button>
+    </div>
+  </form>
+
+  <div class="centered-button">
+    <a href="/restaurants" class="back-button">Volver</a>
+  </div>
+</body>
+</html>
