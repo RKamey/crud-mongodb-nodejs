@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const path = require('path')
+const usersRoutes = require('./src/routes/users');
 const restaurantsRoutes = require('./src/routes/restaurants');
+const { isAuthenticated } = require('./src/middlewares/authMiddleware');
 
 mongoose.Promise = global.Promise;
 const app = express();
@@ -12,7 +14,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.use(express.urlencoded({ extended: false }));
 
-app.use(restaurantsRoutes);
+app.use(usersRoutes);
+app.use('/restaurants', isAuthenticated, restaurantsRoutes);
+
 app.use('/assets', express.static(path.join(__dirname, 'src',  '/public')));
 
 mongoose
