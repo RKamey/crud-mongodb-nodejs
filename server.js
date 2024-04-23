@@ -3,17 +3,15 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const path = require('path')
 const restaurantsRoutes = require('./src/routes/restaurants');
-const moment = require('moment');
 
 mongoose.Promise = global.Promise;
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
-
 app.set('views', path.join(__dirname, 'src', 'views'));
-
 app.use(express.urlencoded({ extended: false }));
+
 app.use(restaurantsRoutes);
 app.use('/assets', express.static(path.join(__dirname, 'src',  '/public')));
 
