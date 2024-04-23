@@ -11,8 +11,9 @@
     
   <header class="navbar">
     <div class="navbar-left">
-      <a href="/" class="navbar-title">Lista de Restaurantes</a>
-    </div>
+      <p class="text-welcome">Hola, <strong><%= user.username %></strong></p>
+      <a href="/" class="logout-button">Cerrar Sesión</a>
+      </div>
     <div class="navbar-center">
       <form action="/find" method="POST">
         <label for="criteria">Buscar:</label>

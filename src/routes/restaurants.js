@@ -3,16 +3,18 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { getIcon } = require('../utils/iconUtils');
 let Restaurant = require('../models/restaurants');
+const jwt = require('jsonwebtoken');
 
-router.get('/', (req, res) => { 
-    res.render('index');
-});
-
-router.get('/restaurants', async (req, res) => {
+router.get('/', async (req, res) => {
   const currentPage = parseInt(req.query.page) || 1; 
   const pageSize = 10; 
 
   try {
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = { username: decoded.username };
+
     const totalRestaurants = await Restaurant.countDocuments({});
     const totalPages = Math.ceil(totalRestaurants / pageSize);
 
@@ -20,7 +22,7 @@ router.get('/restaurants', async (req, res) => {
       .skip((currentPage - 1) * pageSize)
       .limit(pageSize);
 
-    res.render('restaurants', { Restaurants, currentPage, totalPages, getIcon });
+    res.render('restaurants', { Restaurants, currentPage, totalPages, getIcon, user});
   } catch (error) {
     console.log(error);
   }

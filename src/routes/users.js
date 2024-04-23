@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
         if (user.password !== password) {
             return res.render('login', { error: 'Error logging in'});
         }
-        const token = generateToken(user._id);
+        const token = generateToken(user._id, user.username);
         res.cookie('token', token, { httpOnly: true });
         res.redirect('/restaurants');
     } catch (error) {
@@ -40,7 +40,8 @@ router.post('/register', async (req, res) => {
         }
         const newUser = new User({ username, password });
         await newUser.save();
-        const token = generateToken(newUser._id);
+        const token = generateToken(newUser._id, newUser.username);
+        res.cookie('token', token, { httpOnly: true });
         res.redirect('/restaurants');
     } catch (error) {
         console.log(error);
