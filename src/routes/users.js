@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../models/user');
+const { generateToken } = require('../middlewares/authMiddleware');
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
     res.render('login');
 });
 
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await User.findOne({ username: username });
@@ -17,6 +18,8 @@ router.post('/login', async (req, res) => {
         if (user.password !== password) {
             return res.render('login', { error: 'Error logging in'});
         }
+        const token = generateToken(user._id);
+        res.cookie('token', token, { httpOnly: true });
         res.redirect('/restaurants');
     } catch (error) {
         console.log(error);
@@ -37,6 +40,7 @@ router.post('/register', async (req, res) => {
         }
         const newUser = new User({ username, password });
         await newUser.save();
+        const token = generateToken(newUser._id);
         res.redirect('/restaurants');
     } catch (error) {
         console.log(error);
