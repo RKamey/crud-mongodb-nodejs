@@ -18,7 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(usersRoutes);
-app.use('/restaurants', isAuthenticated, restaurantsRoutes);
+app.use(isAuthenticated);
+app.use(restaurantsRoutes);
 
 app.use('/assets', express.static(path.join(__dirname, 'src',  '/public')));
 

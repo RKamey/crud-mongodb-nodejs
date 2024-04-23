@@ -5,7 +5,7 @@ const { getIcon } = require('../utils/iconUtils');
 let Restaurant = require('../models/restaurants');
 const jwt = require('jsonwebtoken');
 
-router.get('/', async (req, res) => {
+router.get('/restaurants', async (req, res) => {
   const currentPage = parseInt(req.query.page) || 1; 
   const pageSize = 10; 
 
